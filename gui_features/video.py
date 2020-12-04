@@ -3,20 +3,46 @@ correctly installed'''
 
 import cv2
 
-cap = cv2.VideoCapture(0)  # device index 0 is first webcam connected
 
-while True:
-    # frame by frame capture
-    ret, frame = cap.read()  # ret-bool returned when a frame is read correctly
+def preview_webcam():
+    ''' Function to demo video capture object'''
 
-    # convert to greyscale
-    gs = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    cap = cv2.VideoCapture(0)  # device index 0 is first webcam connected
 
-    # show frame and quit when q is pressed
-    cv2.imshow('frame', gs)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+    while True:
+        # frame by frame capture
+        ret, frame = cap.read()  # ret-bool returned when a frame is read correctly
 
-# release capture when done
-cap.release()
-cv2.destroyAllWindows()
+        # convert to greyscale
+        gs = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # show frame and quit when q is pressed
+        cv2.imshow('frame', gs)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    # release capture when done
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+def play_video():
+    ''' Function to demo playing a video from a file'''
+
+    vid = cv2.VideoCapture('media/pig.mp4')
+
+    while(vid.isOpened()):
+        ret, frame = vid.read()
+
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        cv2.imshow('frame', gray)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    vid.release()
+    cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    play_video()

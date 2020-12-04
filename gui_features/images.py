@@ -2,7 +2,7 @@ import cv2
 from matplotlib import pyplot as plt
 
 # reading in an image
-img_path = "images/test_image.png"
+img_path = "media/test_image.png"
 
 
 def show_imread_options():
