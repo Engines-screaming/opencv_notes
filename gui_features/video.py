@@ -29,7 +29,7 @@ def preview_webcam():
 def play_video():
     ''' Function to demo playing a video from a file'''
 
-    vid = cv2.VideoCapture('media/pig.mp4')
+    vid = cv2.VideoCapture('../media/pig.mp4')
 
     while(vid.isOpened()):
         ret, frame = vid.read()

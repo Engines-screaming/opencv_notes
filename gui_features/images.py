@@ -2,7 +2,7 @@ import cv2
 from matplotlib import pyplot as plt
 
 # reading in an image
-img_path = "media/test_image.png"
+img_path = "../media/test_image.png"
 
 
 def show_imread_options():
@@ -30,7 +30,7 @@ def save_img_gs(plot=False):
     '''Function to demonstrate viewing a picture with matplotlib, converting
     to greyscale, and saving to location'''
 
-    img = cv2.imread(img_path, -1)
+    img = cv2.imread(img_path, 0)
 
     # opencv interprets images as BGR, matplotlib interprets RGB
     # img2 = img[:, :, ::-1]  # using numpy indexing
@@ -44,7 +44,7 @@ def save_img_gs(plot=False):
     plt.xticks([]), plt.yticks([])  # hide tick marks
     plt.show()
 
-    cv2.imwrite('images/test_image_gs.png', img)
+    cv2.imwrite('../media/test_image_gs.png', img)
 
 
 if __name__ == '__main__':
