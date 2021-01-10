@@ -17,7 +17,7 @@ def blending_images():
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-
+# bitwise image ops
 def bitwise_images():
     '''Places logo on target image'''
 
@@ -49,5 +49,41 @@ def bitwise_images():
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
+
+# exercise
+def blending_slideshow():
+    ''' Produces a slideshow to demonstrate one image blending into another image'''
+    img1 = cv2.imread('../media/vietnam.jpg')
+    img2 = cv2.imread('../media/scared_hamster.jpg')
+
+    # find best size
+    height1, width1, channel1 = img1.shape
+    height2, width2, channel2 = img2.shape
+
+    if height1 <= height2:
+        common_height = height1
+    else:
+        common_height = height2
+
+    if width1 <= width2:
+        common_width = width1
+    else:
+        common_width = width2
+
+    print(f'h1, w1: {height1, width1}')
+    print(f'h2, w2: {height2, width2}')
+    print(f'common height, common width: {common_height, common_width}')
+
+    weight = 0.0
+    step = 0.1
+
+    while weight < 1.0:
+        dst = cv2.addWeighted(img1[:common_height, :common_width], 1-weight, img2[:common_height, :common_width], weight, 0)
+        cv2.imshow('dst', dst)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        weight += step
+
+
 if __name__ == '__main__':
-    bitwise_images()
+    blending_slideshow()
