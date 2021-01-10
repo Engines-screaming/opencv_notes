@@ -51,7 +51,7 @@ def bitwise_images():
 
 
 # exercise
-def blending_slideshow():
+def blending_slideshow(verbose=False):
     ''' Produces a slideshow to demonstrate one image blending into another image'''
     img1 = cv2.imread('../media/vietnam.jpg')
     img2 = cv2.imread('../media/scared_hamster.jpg')
@@ -70,9 +70,10 @@ def blending_slideshow():
     else:
         common_width = width2
 
-    print(f'h1, w1: {height1, width1}')
-    print(f'h2, w2: {height2, width2}')
-    print(f'common height, common width: {common_height, common_width}')
+    if verbose:
+        print(f'h1, w1: {height1, width1}')
+        print(f'h2, w2: {height2, width2}')
+        print(f'common height, common width: {common_height, common_width}')
 
     weight = 0.0
     step = 0.1
