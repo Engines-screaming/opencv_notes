@@ -29,14 +29,14 @@ def preview_webcam():
 def play_video():
     ''' Function to demo playing a video from a file'''
 
-    vid = cv2.VideoCapture('../media/pig.mp4')
+    vid_path = "../media/drop.avi"
+    vid = cv2.VideoCapture(vid_path)
 
     while(vid.isOpened()):
         ret, frame = vid.read()
-
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        cv2.imshow('frame', gray)
-
+        # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        cv2.imshow('frame', frame)
+        
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
